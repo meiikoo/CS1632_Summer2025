@@ -1,9 +1,10 @@
 package edu.pitt.cs;
 
-import static org.junit.Assert.*;
-import org.mockito.*;
-
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+import org.mockito.Mockito;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class SquareTest {
 
@@ -20,7 +21,10 @@ public class SquareTest {
 	@Test
 	public void testSetSquaredIntegration() {
 		// TODO: Fill in!
-		fail();
+		Square square = new Square();
+		Number number = new Number();
+		square.setSquared(number, 3);
+		assertEquals(9, square);
 	}
 
 	/**
@@ -36,6 +40,11 @@ public class SquareTest {
 	@Test
 	public void testSetSquaredUnit() {
 		// TODO: Fill in!
-		fail();
+		Square square = new Square(); 
+		Number mockNumber = Mockito.mock(Number.class);
+		square.setSquared(mockNumber, 3);
+		when(mockNumber.getVal()).thenReturn(9);
+		assertEquals(mockNumber, 9);
+		verify(mockNumber.getVal());
 	}
 }
